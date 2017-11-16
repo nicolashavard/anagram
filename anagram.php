@@ -111,6 +111,7 @@ class master
             }
         }
         print_r($this->the_good_one);
+        echo "exec time: ".round(microtime(), 2)."s\n";
     }
 }
 
