@@ -25,6 +25,11 @@ class master
         }
         if(isset($argv[2]))
         {
+            if($argv[2]==0)
+            {
+                echo "Veuillez entrer un nombre correct\nexec time: 0S\n";
+                die;
+            }
             $this->nb = $argv[2];
         }
         $this->anagram_len = strlen($this->anagram) - $this->nb;
