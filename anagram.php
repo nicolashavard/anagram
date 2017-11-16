@@ -14,12 +14,20 @@ class master
     public $source;
     public function __construct($argv)
     {
-        $this->anagram = $argv[1];
+        if(isset($argv[1]))
+        {
+            $this->anagram = $argv[1];
+        }
+        else
+        {
+            echo "il est necessaire d'avoir un mot\n";
+            die;
+        }
         if(isset($argv[2]))
         {
             $this->nb = $argv[2];
         }
-        $this->anagram_len = strlen($this->anagram);
+        $this->anagram_len = strlen($this->anagram) - $this->nb;
         $this->anagram_sort = $this->sort($this->anagram);
     }
     public function dictionnaire() // permet de recuperer les mots de memes taille
@@ -110,8 +118,15 @@ class master
                 $this->the_good_one[] = $value;
             }
         }
-        print_r($this->the_good_one);
-        echo "exec time: ".round(microtime(), 2)."s\n";
+        if(!isset($this->the_good_one[0]))
+        {
+            echo "pas de resultat\n";
+        }
+        else
+        {
+            print_r($this->the_good_one);
+            echo "exec time: " . round(microtime(), 2) . "s\n";
+        }
     }
 }
 
