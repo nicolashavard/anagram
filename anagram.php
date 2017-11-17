@@ -1,7 +1,8 @@
 <?php
-
+$start = microtime(true);
 class master
 {
+
     private $anagram;
     private $anagram_sort;
     private $nb = null;
@@ -130,10 +131,11 @@ class master
         else
         {
             print_r($this->the_good_one);
-            echo "exec time: " . round(microtime(), 2) . "s\n";
+            
         }
     }
 }
 
 $nicolas = new master($argv);
 $nicolas->dictionnaire();
+echo "exec time: " .round(microtime(true) - $start, 2) . "s\n";
